@@ -3,6 +3,24 @@
  	easing: 'slide'
  });
 
+ $(document).ready(function(){
+	$('ul.tabs li a:first').addClass('activando');
+	$('.secciones section').hide();
+	$('.secciones section:first').show();
+	
+	$('ul.tabs li a').click(function(){
+			$('ul.tabs li a').removeClass('activando');
+			$(this).addClass('activando');
+			$('.secciones section').hide();
+
+			var activetab = $(this).attr('href');
+			$(activetab).show();
+			return false;
+
+	});
+});
+
+
 (function($) {
 
 	"use strict";
@@ -151,6 +169,7 @@
 	var carousel = function() {
 		$('.carousel-testimony').owlCarousel({
 			autoplay: true,
+			autoplayTimeout: 10000,
 			autoHeight: true,
 			center: true,
 			loop: true,
